@@ -4,20 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#ffeef4" />
-  <title>For My Bestie 💗</title>
+  <title>For My Bestie Sanobar 💗</title>
   <style>
-    /* ==========================================================================
-       1. THEME VARIABLES & RESET
-       ========================================================================== */
     :root {
       --bg-pink-light: #fff6f9;
       --bg-pink-mid: #ffe3ee;
-      --bg-pink-soft: #ffd2e4;
-      --card-bg: rgba(255, 255, 255, 0.9);
+      --card-bg: rgba(255, 255, 255, 0.92);
       --card-border: rgba(255, 182, 209, 0.65);
       --primary-pink: #ff5c93;
       --primary-pink-dark: #e03e76;
-      --secondary-pink: #ff8fb8;
       --accent-rose: #ffabc7;
       --text-main: #4a2c3a;
       --text-muted: #7d5668;
@@ -26,7 +21,7 @@
       --radius-lg: 26px;
       --radius-md: 18px;
       --radius-pill: 999px;
-      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       --font-serif: "Georgia", "Times New Roman", serif;
     }
 
@@ -46,16 +41,12 @@
       color: var(--text-main);
       background: linear-gradient(160deg, var(--bg-pink-light) 0%, var(--bg-pink-mid) 50%, #fff0f6 100%);
       min-height: 100vh;
-      min-height: 100dvh;
       overflow-x: hidden;
       line-height: 1.6;
       position: relative;
-      padding-bottom: env(safe-area-inset-bottom, 24px);
+      padding-bottom: 36px;
     }
 
-    /* ==========================================================================
-       2. FLOATING BACKGROUND HEARTS & SPARKLES
-       ========================================================================== */
     .bg-decorations {
       position: fixed;
       inset: 0;
@@ -73,23 +64,12 @@
     }
 
     @keyframes floatUp {
-      0% {
-        transform: translateY(0) translateX(0) rotate(0deg) scale(0.85);
-        opacity: 0;
-      }
-      15% {
-        opacity: 0.65;
-      }
-      85% {
-        opacity: 0.65;
-      }
-      100% {
-        transform: translateY(-110vh) translateX(25px) rotate(360deg) scale(1.1);
-        opacity: 0;
-      }
+      0% { transform: translateY(0) translateX(0) rotate(0deg) scale(0.85); opacity: 0; }
+      15% { opacity: 0.65; }
+      85% { opacity: 0.65; }
+      100% { transform: translateY(-110vh) translateX(25px) rotate(360deg) scale(1.1); opacity: 0; }
     }
 
-    /* Confetti Canvas for "Yes" Celebration */
     #confetti-canvas {
       position: fixed;
       inset: 0;
@@ -99,19 +79,16 @@
       z-index: 50;
     }
 
-    /* ==========================================================================
-       3. LAYOUT & CARDS
-       ========================================================================== */
     .page-wrapper {
       position: relative;
       z-index: 2;
       width: 100%;
       max-width: 520px;
       margin: 0 auto;
-      padding: 24px 16px 40px;
+      padding: 20px 16px 40px;
       display: flex;
       flex-direction: column;
-      gap: 24px;
+      gap: 20px;
     }
 
     .card {
@@ -120,12 +97,11 @@
       -webkit-backdrop-filter: blur(12px);
       border: 1.5px solid var(--card-border);
       border-radius: var(--radius-lg);
-      padding: 28px 22px;
+      padding: 24px 20px;
       box-shadow: var(--shadow-soft);
       text-align: center;
       position: relative;
       overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .card::before {
@@ -138,9 +114,6 @@
       background: linear-gradient(90deg, #ff9ec2, #ff5c93, #ff9ec2);
     }
 
-    /* ==========================================================================
-       4. OPENING SCREEN & ILLUSTRATION
-       ========================================================================== */
     .hero-badge {
       display: inline-flex;
       align-items: center;
@@ -151,34 +124,30 @@
       font-weight: 600;
       padding: 6px 14px;
       border-radius: var(--radius-pill);
-      margin-bottom: 14px;
-      letter-spacing: 0.02em;
+      margin-bottom: 12px;
     }
 
     .greeting-title {
-      font-size: clamp(1.75rem, 6vw, 2.25rem);
+      font-size: clamp(1.75rem, 6vw, 2.2rem);
       font-weight: 800;
       color: var(--primary-pink-dark);
-      margin-bottom: 8px;
-      letter-spacing: -0.02em;
+      margin-bottom: 6px;
       animation: fadeSlideDown 0.8s ease forwards;
     }
 
     .greeting-subtitle {
-      font-size: 1.05rem;
+      font-size: 1.02rem;
       color: var(--text-muted);
       font-weight: 500;
-      margin-bottom: 18px;
+      margin-bottom: 12px;
       opacity: 0;
-      animation: fadeSlideUp 0.8s ease 0.35s forwards;
+      animation: fadeSlideUp 0.8s ease 0.3s forwards;
     }
 
-    /* Cute Animated SVG Illustration */
     .illustration-box {
-      width: 170px;
-      height: 170px;
-      margin: 6px auto 10px;
-      position: relative;
+      width: 155px;
+      height: 155px;
+      margin: 4px auto;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -231,9 +200,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* ==========================================================================
-       5. PERSONAL APOLOGY SECTION
-       ========================================================================== */
     .section-tag {
       font-size: 0.8rem;
       text-transform: uppercase;
@@ -248,18 +214,17 @@
       background: linear-gradient(180deg, #fff9fb 0%, #fff0f5 100%);
       border: 1px dashed var(--accent-rose);
       border-radius: var(--radius-md);
-      padding: 20px 18px;
+      padding: 18px 16px;
       text-align: left;
-      position: relative;
-      min-height: 132px;
+      min-height: 120px;
       display: flex;
       align-items: center;
     }
 
     .apology-text {
-      font-size: 1.05rem;
+      font-size: 1.02rem;
       color: var(--text-main);
-      line-height: 1.75;
+      line-height: 1.7;
       font-weight: 500;
     }
 
@@ -281,30 +246,25 @@
       to { visibility: hidden; }
     }
 
-    /* ==========================================================================
-       6. INTERACTIVE FORGIVENESS QUESTION CARD
-       ========================================================================== */
     .question-title {
-      font-size: clamp(1.3rem, 5vw, 1.55rem);
+      font-size: clamp(1.25rem, 5vw, 1.5rem);
       color: var(--text-main);
       font-weight: 800;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .playful-hint {
-      min-height: 26px;
+      min-height: 24px;
       font-size: 0.95rem;
       color: var(--primary-pink-dark);
       font-weight: 600;
       margin-bottom: 12px;
-      transition: opacity 0.25s ease, transform 0.25s ease;
     }
 
-    /* Safe designated area for the buttons so "No" never escapes or blocks scrolling */
     .button-arena {
       position: relative;
       width: 100%;
-      height: 190px;
+      height: 185px;
       background: #fff7fa;
       border: 1px solid #ffdbe8;
       border-radius: var(--radius-md);
@@ -318,9 +278,9 @@
       outline: none;
       cursor: pointer;
       font-family: inherit;
-      font-size: 1.05rem;
+      font-size: 1.02rem;
       font-weight: 700;
-      padding: 13px 28px;
+      padding: 12px 26px;
       border-radius: var(--radius-pill);
       min-height: 48px;
       display: inline-flex;
@@ -328,19 +288,13 @@
       justify-content: center;
       gap: 6px;
       user-select: none;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
-    .btn:focus-visible {
-      outline: 3px solid var(--primary-pink);
-      outline-offset: 3px;
-    }
-
-    /* Stationary Yes Button */
     .btn-yes {
       position: absolute;
-      left: 22px;
-      top: 22px;
+      left: 20px;
+      top: 20px;
       background: linear-gradient(135deg, #ff5c93 0%, #ff3d7f 100%);
       color: #ffffff;
       box-shadow: var(--shadow-button);
@@ -350,23 +304,18 @@
     .btn-yes:hover,
     .btn-yes:active {
       transform: scale(1.05);
-      box-shadow: 0 10px 24px rgba(255, 61, 127, 0.38);
     }
 
-    /* Floating No Button */
     .btn-no {
       position: absolute;
-      right: 22px;
-      top: 22px;
+      right: 20px;
+      top: 20px;
       background: #ffffff;
       color: var(--text-muted);
       border: 1.5px solid #ffc2d9;
       box-shadow: 0 6px 14px rgba(180, 110, 140, 0.12);
       z-index: 2;
-      transition:
-        left 0.36s cubic-bezier(0.34, 1.56, 0.64, 1),
-        top 0.36s cubic-bezier(0.34, 1.56, 0.64, 1),
-        transform 0.2s ease;
+      transition: left 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), top 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
       animation: floatNoBtn 2.6s ease-in-out infinite;
     }
 
@@ -375,9 +324,6 @@
       50% { transform: translateY(-4px); }
     }
 
-    /* ==========================================================================
-       7. SUCCESS SCREEN & ENVELOPE LETTER
-       ========================================================================== */
     .success-card {
       display: none;
       background: linear-gradient(180deg, #ffffff 0%, #fff4f8 100%);
@@ -390,31 +336,25 @@
     }
 
     @keyframes popIn {
-      from {
-        opacity: 0;
-        transform: scale(0.92) translateY(16px);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-      }
+      from { opacity: 0; transform: scale(0.92) translateY(16px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
     }
 
     .celebration-hearts {
-      font-size: 2rem;
-      margin-bottom: 10px;
+      font-size: 1.9rem;
+      margin-bottom: 8px;
       display: inline-block;
       animation: pulseHeart 1.4s ease-in-out infinite;
     }
 
     .success-message {
-      font-size: 1.05rem;
+      font-size: 1.02rem;
       color: var(--text-main);
       line-height: 1.75;
-      margin-bottom: 22px;
+      margin-bottom: 20px;
       font-weight: 500;
       background: #fff9fb;
-      padding: 18px;
+      padding: 16px;
       border-radius: var(--radius-md);
       border: 1px solid #ffd8e6;
     }
@@ -424,19 +364,13 @@
       color: #ffffff;
       box-shadow: var(--shadow-button);
       width: 100%;
-      max-width: 280px;
+      max-width: 270px;
       margin: 0 auto;
     }
 
-    .btn-letter:hover,
-    .btn-letter:active {
-      transform: translateY(-2px);
-    }
-
-    /* Envelope Wrapper & Animation */
     .envelope-stage {
       display: none;
-      margin-top: 26px;
+      margin-top: 24px;
       padding-top: 10px;
     }
 
@@ -448,7 +382,7 @@
     .envelope-graphic {
       width: 220px;
       height: 140px;
-      margin: 28px auto 18px;
+      margin: 26px auto 16px;
       position: relative;
       perspective: 800px;
     }
@@ -476,7 +410,6 @@
       font-size: 1.5rem;
       transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.3s;
       z-index: 2;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
     }
 
     .envelope-front {
@@ -528,12 +461,10 @@
       align-items: center;
       justify-content: center;
       font-size: 1rem;
-      box-shadow: 0 3px 8px rgba(200, 40, 95, 0.35);
       z-index: 5;
       transition: opacity 0.3s ease, transform 0.3s ease;
     }
 
-    /* Open State for Envelope */
     .envelope-stage.open .envelope-flap {
       transform: rotateX(180deg);
       z-index: 1;
@@ -548,12 +479,11 @@
       transform: translateY(-48px);
     }
 
-    /* Full Personal Letter Card */
     .personal-letter-sheet {
       background: #fffcfd;
       border: 1.5px solid #ffc9dd;
       border-radius: var(--radius-md);
-      padding: 24px 20px;
+      padding: 22px 18px;
       text-align: left;
       box-shadow: inset 0 0 24px rgba(255, 192, 215, 0.18), 0 8px 24px rgba(225, 100, 145, 0.1);
       font-family: var(--font-serif);
@@ -577,8 +507,8 @@
     }
 
     .personal-letter-sheet p {
-      font-size: 1rem;
-      line-height: 1.8;
+      font-size: 0.98rem;
+      line-height: 1.75;
       margin-bottom: 12px;
     }
 
@@ -590,14 +520,10 @@
       text-align: right;
     }
 
-    /* ==========================================================================
-       8. FOOTER / CREATOR CREDIT
-       ========================================================================== */
     .site-footer {
       text-align: center;
-      padding: 12px 16px 8px;
+      padding: 10px 16px;
       font-size: 0.9rem;
-      color: var(--text-muted);
     }
 
     .creator-badge {
@@ -608,56 +534,23 @@
       border-radius: var(--radius-pill);
       font-weight: 700;
       color: var(--primary-pink-dark);
-      box-shadow: 0 4px 12px rgba(235, 105, 150, 0.1);
-    }
-
-    /* ==========================================================================
-       9. ACCESSIBILITY: REDUCED MOTION SUPPORT
-       ========================================================================== */
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-      }
-      .greeting-subtitle {
-        opacity: 1 !important;
-      }
-      .personal-letter-sheet {
-        opacity: 1 !important;
-        transform: none !important;
-      }
     }
   </style>
 </head>
 <body>
-  <!-- Decorative Floating Hearts & Sparkles Background -->
   <div class="bg-decorations" id="bg-decorations" aria-hidden="true"></div>
-
-  <!-- Confetti Canvas (Activated when she taps Yes) -->
   <canvas id="confetti-canvas" aria-hidden="true"></canvas>
 
   <main class="page-wrapper">
-    <!-- ========================================================================
-         SECTION 1: OPENING SCREEN
-         CUSTOMISE NAME: Replace [SANOBAR] or [HER_NAME] below if desired.
-         ======================================================================== -->
+    <!-- 1. OPENING GREETING CARD -->
     <header class="card" aria-label="Greeting">
       <span class="hero-badge">✨ Special Delivery For My Bestie ✨</span>
-
-      <h1 class="greeting-title">Hey, [SANOBAR] 💗</h1>
+      <h1 class="greeting-title">Hey, Sanobar 💗</h1>
       <p class="greeting-subtitle">I have a little something for you...</p>
 
-      <!-- Cute Animated Inline SVG Illustration (No external assets needed) -->
       <div class="illustration-box" aria-hidden="true">
         <svg class="cute-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-          <!-- Soft Glow Circle -->
           <circle cx="100" cy="105" r="72" fill="#ffeaf2" />
-
-          <!-- Sparkles -->
           <g class="svg-sparkle" fill="#ff7aa8">
             <path d="M35 45 L39 55 L49 59 L39 63 L35 73 L31 63 L21 59 L31 55 Z" />
           </g>
@@ -666,35 +559,298 @@
           </g>
           <circle class="svg-sparkle" cx="168" cy="128" r="4" fill="#ff7aa8" />
           <circle class="svg-sparkle-delayed" cx="30" cy="125" r="3.5" fill="#ff9ec2" />
-
-          <!-- Cute Bear Ears -->
           <circle cx="62" cy="64" r="20" fill="#fff" stroke="#f3b6cf" stroke-width="4" />
           <circle cx="62" cy="64" r="10" fill="#ffc2d9" />
           <circle cx="138" cy="64" r="20" fill="#fff" stroke="#f3b6cf" stroke-width="4" />
           <circle cx="138" cy="64" r="10" fill="#ffc2d9" />
-
-          <!-- Cute Bear Body -->
           <ellipse cx="100" cy="145" rx="44" ry="36" fill="#fff" stroke="#f3b6cf" stroke-width="4" />
-
-          <!-- Cute Bear Head -->
           <circle cx="100" cy="95" r="46" fill="#fff" stroke="#f3b6cf" stroke-width="4" />
-
-          <!-- Rosy Cheeks -->
           <ellipse cx="70" cy="102" rx="9" ry="5.5" fill="#ffb3ce" />
           <ellipse cx="130" cy="102" rx="9" ry="5.5" fill="#ffb3ce" />
-
-          <!-- Eyes -->
           <circle cx="79" cy="90" r="5" fill="#4a2c3a" />
           <circle cx="77.5" cy="88.5" r="1.8" fill="#fff" />
           <circle cx="121" cy="90" r="5" fill="#4a2c3a" />
           <circle cx="119.5" cy="88.5" r="1.8" fill="#fff" />
-
-          <!-- Cute Snout & Smile -->
           <ellipse cx="100" cy="100" rx="11" ry="8" fill="#fff5f8" />
           <ellipse cx="100" cy="97" rx="4.5" ry="3.2" fill="#ff6b9d" />
           <path d="M95 103 Q100 108 105 103" fill="none" stroke="#4a2c3a" stroke-width="2.5" stroke-linecap="round" />
-
-          <!-- Pulsing Heart Held by Paws -->
           <g class="svg-heart-pulse">
-            <path
-              d="M100 165 C100 165 68 144 68 126 C68 115 77 108 86 108 C93 108 98 112 100 117 C102 112 107 108 114 108 C123 108 132 115 132 126 C13
+            <path d="M100 165 C100 165 68 144 68 126 C68 115 77 108 86 108 C93 108 98 112 100 117 C102 112 107 108 114 108 C123 108 132 115 132 126 C132 144 100 165 100 165 Z" fill="#ff4f8b" stroke="#ffffff" stroke-width="3" />
+          </g>
+          <circle cx="73" cy="136" r="11" fill="#fff" stroke="#f3b6cf" stroke-width="3.5" />
+          <circle cx="127" cy="136" r="11" fill="#fff" stroke="#f3b6cf" stroke-width="3.5" />
+        </svg>
+      </div>
+    </header>
+
+    <!-- 2. PERSONAL APOLOGY CARD -->
+    <section class="card" aria-label="Personal Apology">
+      <span class="section-tag">💌 From My Heart</span>
+      <div class="apology-box">
+        <p class="apology-text">
+          <span id="apology-text">Hey bestie, I'm really sorry I wasn't online. I never meant to make you feel ignored. You matter to me, and I don't want a little misunderstanding to spoil our friendship. 💗</span><span id="typewriter-cursor" class="typewriter-cursor" aria-hidden="true"></span>
+        </p>
+      </div>
+    </section>
+
+    <!-- 3. INTERACTIVE FORGIVENESS QUESTION CARD -->
+    <section class="card" id="question-card" aria-labelledby="question-heading">
+      <span class="section-tag">🥺 Quick Question</span>
+      <h2 class="question-title" id="question-heading">
+        Have you forgiven me, Sanobar? 🥺💗
+      </h2>
+      <p class="playful-hint" id="playful-hint" aria-live="polite">
+        Tap your answer below ✨
+      </p>
+
+      <div class="button-arena" id="button-arena">
+        <button type="button" class="btn btn-yes" id="btn-yes" aria-label="Yes, I forgive you">
+          Yes 💖
+        </button>
+        <button type="button" class="btn btn-no" id="btn-no" aria-label="No, not yet">
+          No 🙈
+        </button>
+      </div>
+    </section>
+
+    <!-- 4. SUCCESS SCREEN & LETTER CARD -->
+    <section class="card success-card" id="success-card" aria-live="polite">
+      <div class="celebration-hearts" aria-hidden="true">💖✨🫶✨💖</div>
+      <h2 class="question-title">Best Friends Forever! 💗</h2>
+
+      <p class="success-message">
+        YAYYY! 💖 Thank you for giving me another chance, bestie! You're genuinely important to me. I'm really sorry, and I hope we can go back to laughing, talking, and sharing our random little moments. No matter what, I'll always value our friendship. 🫶✨
+      </p>
+
+      <button type="button" class="btn btn-letter" id="btn-read-letter" aria-expanded="false" aria-controls="envelope-stage">
+        Read my little letter 💌
+      </button>
+
+      <div class="envelope-stage" id="envelope-stage">
+        <div class="envelope-graphic" aria-hidden="true">
+          <div class="envelope-back"></div>
+          <div class="envelope-letter-preview">💗</div>
+          <div class="envelope-front"></div>
+          <div class="envelope-flap"></div>
+          <div class="wax-seal">💌</div>
+        </div>
+
+        <article class="personal-letter-sheet" aria-label="Personal Letter for Bestie">
+          <h3>Dear Sanobar, 🌸</h3>
+          <p>
+            I just wanted to write this little note to remind you how much our bond means to me. Having a best friend like you makes ordinary days brighter, funnier, and so much better.
+          </p>
+          <p>
+            I'm truly sorry for not being around when you looked for me. Even when life gets busy, you are never forgotten or unimportant to me. Thank you for being patient with me and for having the sweetest heart.
+          </p>
+          <p>
+            Promise me we'll keep making silly memories, sharing endless stories, and sticking together through everything! 🌷✨
+          </p>
+          <div class="letter-signoff">
+            Always your bestie,<br />
+            Krishank 💖
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 5. CREATOR FOOTER -->
+    <footer class="site-footer">
+      <span class="creator-badge">By krishank,sanobar's besti</span>
+    </footer>
+  </main>
+
+  <script>
+    const APOLOGY_MESSAGE =
+      "Hey bestie, I'm really sorry I wasn't online. I never meant to make you feel ignored. You matter to me, and I don't want a little misunderstanding to spoil our friendship. 💗";
+
+    const PLAYFUL_NO_MESSAGES = [
+      "Hehe, try again! 🙈",
+      "Oops! That button is shy! 🌸",
+      "Hehe, try again! 🙈 Besties must forgive!",
+      "Catch me if you can! Tap Yes instead 💖",
+      "Nice try, Sanobar! Hehe, try again! 🙈"
+    ];
+
+    function initFloatingBackground() {
+      const container = document.getElementById("bg-decorations");
+      const symbols = ["💗", "💖", "✨", "🌸", "💕", "🌷"];
+            for (let i = 0; i < 15; i++) {
+        const span = document.createElement("span");
+        span.className = "floating-item";
+        span.textContent = symbols[i % symbols.length];
+        span.style.left = `${Math.random() * 94 + 2}%`;
+        span.style.fontSize = `${Math.random() * 14 + 14}px`;
+        span.style.animationDuration = `${Math.random() * 7 + 8}s`;
+        span.style.animationDelay = `${Math.random() * 6}s`;
+        container.appendChild(span);
+      }
+    }
+
+    function initTypewriter() {
+      const textEl = document.getElementById("apology-text");
+      const cursorEl = document.getElementById("typewriter-cursor");
+      const chars = Array.from(APOLOGY_MESSAGE);
+      textEl.textContent = "";
+      let index = 0;
+
+      function typeNextChar() {
+        if (index < chars.length) {
+          textEl.textContent += chars[index];
+          index++;
+          setTimeout(typeNextChar, 26);
+        } else {
+          setTimeout(() => cursorEl.classList.add("hidden"), 1500);
+        }
+      }
+      setTimeout(typeNextChar, 400);
+    }
+
+    function initForgivenessButtons() {
+      const arena = document.getElementById("button-arena");
+      const btnYes = document.getElementById("btn-yes");
+      const btnNo = document.getElementById("btn-no");
+      const hintEl = document.getElementById("playful-hint");
+      const successCard = document.getElementById("success-card");
+      let noClickCount = 0;
+
+      function moveNoButtonSafely() {
+        const arenaRect = arena.getBoundingClientRect();
+        const yesRect = btnYes.getBoundingClientRect();
+        const noWidth = btnNo.offsetWidth;
+        const noHeight = btnNo.offsetHeight;
+
+        const padding = 12;
+        const maxLeft = Math.max(padding, arena.clientWidth - noWidth - padding);
+        const maxTop = Math.max(padding, arena.clientHeight - noHeight - padding);
+
+        const buffer = 12;
+        const yesBox = {
+          left: (yesRect.left - arenaRect.left) - buffer,
+          top: (yesRect.top - arenaRect.top) - buffer,
+          right: (yesRect.right - arenaRect.left) + buffer,
+          bottom: (yesRect.bottom - arenaRect.top) + buffer
+        };
+
+        let chosenLeft = padding;
+        let chosenTop = maxTop;
+
+        for (let attempt = 0; attempt < 40; attempt++) {
+          const candidateLeft = Math.floor(padding + Math.random() * (maxLeft - padding + 1));
+          const candidateTop = Math.floor(padding + Math.random() * (maxTop - padding + 1));
+
+          const overlapsYes = !(
+            candidateLeft + noWidth < yesBox.left ||
+            candidateLeft > yesBox.right ||
+            candidateTop + noHeight < yesBox.top ||
+            candidateTop > yesBox.bottom
+          );
+
+          if (!overlapsYes) {
+            chosenLeft = candidateLeft;
+            chosenTop = candidateTop;
+            break;
+          }
+        }
+
+        btnNo.style.right = "auto";
+        btnNo.style.left = `${chosenLeft}px`;
+        btnNo.style.top = `${chosenTop}px`;
+
+        hintEl.textContent = PLAYFUL_NO_MESSAGES[noClickCount % PLAYFUL_NO_MESSAGES.length];
+        noClickCount++;
+      }
+
+      btnNo.addEventListener("click", (e) => {
+        e.preventDefault();
+        moveNoButtonSafely();
+      });
+
+      btnYes.addEventListener("click", () => {
+        hintEl.textContent = "Yay!! Thank you, bestie! 💖";
+        successCard.classList.add("visible");
+        launchConfetti();
+        setTimeout(() => {
+          successCard.scrollIntoView({ behavior: "smooth", block: "center" });
+        }, 120);
+      });
+    }
+
+    function initLetterReveal() {
+      const btnReadLetter = document.getElementById("btn-read-letter");
+      const envelopeStage = document.getElementById("envelope-stage");
+
+      btnReadLetter.addEventListener("click", () => {
+        if (!envelopeStage.classList.contains("open")) {
+          envelopeStage.classList.add("visible");
+          btnReadLetter.setAttribute("aria-expanded", "true");
+          btnReadLetter.textContent = "Opened with love 💌";
+          requestAnimationFrame(() => {
+            setTimeout(() => {
+              envelopeStage.classList.add("open");
+              envelopeStage.scrollIntoView({ behavior: "smooth", block: "nearest" });
+            }, 60);
+          });
+        }
+      });
+    }
+
+    function launchConfetti() {
+      const canvas = document.getElementById("confetti-canvas");
+      const ctx = canvas.getContext("2d");
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      const colors = ["#ff5c93", "#ff8fb8", "#ffb8d1", "#ffd166", "#ffffff", "#ff477e"];
+      const particles = [];
+
+      for (let i = 0; i < 70; i++) {
+        particles.push({
+          x: canvas.width / 2 + (Math.random() - 0.5) * 140,
+          y: canvas.height * 0.55,
+          vx: (Math.random() - 0.5) * 11,
+          vy: -(Math.random() * 10 + 5),
+          size: Math.random() * 7 + 5,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          rotation: Math.random() * 360,
+          rotationSpeed: (Math.random() - 0.5) * 8,
+          gravity: 0.22,
+          opacity: 1
+        });
+      }
+
+      function animateConfetti() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        let activeCount = 0;
+        particles.forEach((p) => {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += p.gravity;
+          p.rotation += p.rotationSpeed;
+          p.opacity -= 0.008;
+          if (p.opacity > 0 && p.y < canvas.height + 20) {
+            activeCount++;
+            ctx.save();
+            ctx.globalAlpha = Math.max(0, p.opacity);
+            ctx.translate(p.x, p.y);
+            ctx.rotate((p.rotation * Math.PI) / 180);
+            ctx.fillStyle = p.color;
+            ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.7);
+            ctx.restore();
+          }
+        });
+        if (activeCount > 0) requestAnimationFrame(animateConfetti);
+        else ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+      requestAnimationFrame(animateConfetti);
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      initFloatingBackground();
+      initTypewriter();
+      initForgivenessButtons();
+      initLetterReveal();
+    });
+  </script>
+</body>
+</html>
