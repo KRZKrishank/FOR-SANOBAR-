@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#ffeef4" />
+  <title>For My Bestie 💗</title>
+  <style>
+    /* ==========================================================================
+       1. THEME VARIABLES & RESET
+       ========================================================================== */
+    :root {
+      --bg-pink-light: #fff6f9;
+      --bg-pink-mid: #ffe3ee;
+      --bg-pink-soft: #ffd2e4;
+      --card-bg: rgba(255, 255, 255, 0.9);
+      --card-border: rgba(255, 182, 209, 0.65);
+      --primary-pink: #ff5c93;
+      --primary-pink-dark: #e03e76;
+      --secondary-pink: #ff8fb8;
+      --accent-rose: #ffabc7;
+      --text-main: #4a2c3a;
+      --text-muted: #7d5668;
+      --shadow-soft: 0 14px 35px rgba(235, 105, 150, 0.14);
+      --shadow-button: 0 8px 20px rgba(255, 92, 147, 0.28);
+      --radius-lg: 26px;
+      --radius-md: 18px;
+      --radius-pill: 999px;
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --font-serif: "Georgia", "Times New Roman", serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--text-main);
+      background: linear-gradient(160deg, var(--bg-pink-light) 0%, var(--bg-pink-mid) 50%, #fff0f6 100%);
+      min-height: 100vh;
+      min-height: 100dvh;
+      overflow-x: hidden;
+      line-height: 1.6;
+      position: relative;
+      padding-bottom: env(safe-area-inset-bottom, 24px);
+    }
+
+    /* ==========================================================================
+       2. FLOATING BACKGROUND HEARTS & SPARKLES
+       ========================================================================== */
+    .bg-decorations {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .floating-item {
+      position: absolute;
+      bottom: -40px;
+      user-select: none;
+      opacity: 0.55;
+      animation: floatUp linear infinite;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) translateX(0) rotate(0deg) scale(0.85);
+        opacity: 0;
+      }
+      15% {
+        opacity: 0.65;
+      }
+      85% {
+        opacity: 0.65;
+      }
+      100% {
+        transform: translateY(-110vh) translateX(25px) rotate(360deg) scale(1.1);
+        opacity: 0;
+      }
+    }
+
+    /* Confetti Canvas for "Yes" Celebration */
+    #confetti-canvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 50;
+    }
+
+    /* ==========================================================================
+       3. LAYOUT & CARDS
+       ========================================================================== */
+    .page-wrapper {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 520px;
+      margin: 0 auto;
+      padding: 24px 16px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1.5px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      padding: 28px 22px;
+      box-shadow: var(--shadow-soft);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, #ff9ec2, #ff5c93, #ff9ec2);
+    }
+
+    /* ==========================================================================
+       4. OPENING SCREEN & ILLUSTRATION
+       ========================================================================== */
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #ffe8f1;
+      color: var(--primary-pink-dark);
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      margin-bottom: 14px;
+      letter-spacing: 0.02em;
+    }
+
+    .greeting-title {
+      font-size: clamp(1.75rem, 6vw, 2.25rem);
+      font-weight: 800;
+      color: var(--primary-pink-dark);
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+      animation: fadeSlideDown 0.8s ease forwards;
+    }
+
+    .greeting-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      margin-bottom: 18px;
+      opacity: 0;
+      animation: fadeSlideUp 0.8s ease 0.35s forwards;
+    }
+
+    /* Cute Animated SVG Illustration */
+    .illustration-box {
+      width: 170px;
+      height: 170px;
+      margin: 6px auto 10px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cute-svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+      animation: gentleBounce 3.2s ease-in-out infinite;
+    }
+
+    .svg-heart-pulse {
+      transform-origin: center;
+      animation: pulseHeart 1.6s ease-in-out infinite;
+    }
+
+    .svg-sparkle {
+      transform-origin: center;
+      animation: twinkle 2.2s ease-in-out infinite;
+    }
+
+    .svg-sparkle-delayed {
+      transform-origin: center;
+      animation: twinkle 2.2s ease-in-out 1.1s infinite;
+    }
+
+    @keyframes gentleBounce {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-7px); }
+    }
+
+    @keyframes pulseHeart {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.12); }
+    }
+
+    @keyframes twinkle {
+      0%, 100% { transform: scale(0.7) rotate(0deg); opacity: 0.4; }
+      50% { transform: scale(1.15) rotate(15deg); opacity: 1; }
+    }
+
+    @keyframes fadeSlideDown {
+      from { opacity: 0; transform: translateY(-14px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ==========================================================================
+       5. PERSONAL APOLOGY SECTION
+       ========================================================================== */
+    .section-tag {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--primary-pink);
+      font-weight: 700;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .apology-box {
+      background: linear-gradient(180deg, #fff9fb 0%, #fff0f5 100%);
+      border: 1px dashed var(--accent-rose);
+      border-radius: var(--radius-md);
+      padding: 20px 18px;
+      text-align: left;
+      position: relative;
+      min-height: 132px;
+      display: flex;
+      align-items: center;
+    }
+
+    .apology-text {
+      font-size: 1.05rem;
+      color: var(--text-main);
+      line-height: 1.75;
+      font-weight: 500;
+    }
+
+    .typewriter-cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1.1em;
+      background-color: var(--primary-pink);
+      margin-left: 3px;
+      vertical-align: text-bottom;
+      animation: blinkCursor 0.8s steps(2, start) infinite;
+    }
+
+    .typewriter-cursor.hidden {
+      display: none;
+    }
+
+    @keyframes blinkCursor {
+      to { visibility: hidden; }
+    }
+
+    /* ==========================================================================
+       6. INTERACTIVE FORGIVENESS QUESTION CARD
+       ========================================================================== */
+    .question-title {
+      font-size: clamp(1.3rem, 5vw, 1.55rem);
+      color: var(--text-main);
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .playful-hint {
+      min-height: 26px;
+      font-size: 0.95rem;
+      color: var(--primary-pink-dark);
+      font-weight: 600;
+      margin-bottom: 12px;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    /* Safe designated area for the buttons so "No" never escapes or blocks scrolling */
+    .button-arena {
+      position: relative;
+      width: 100%;
+      height: 190px;
+      background: #fff7fa;
+      border: 1px solid #ffdbe8;
+      border-radius: var(--radius-md);
+      padding: 16px;
+      overflow: hidden;
+      touch-action: manipulation;
+    }
+
+    .btn {
+      border: none;
+      outline: none;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 1.05rem;
+      font-weight: 700;
+      padding: 13px 28px;
+      border-radius: var(--radius-pill);
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      user-select: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    }
+
+    .btn:focus-visible {
+      outline: 3px solid var(--primary-pink);
+      outline-offset: 3px;
+    }
+
+    /* Stationary Yes Button */
+    .btn-yes {
+      position: absolute;
+      left: 22px;
+      top: 22px;
+      background: linear-gradient(135deg, #ff5c93 0%, #ff3d7f 100%);
+      color: #ffffff;
+      box-shadow: var(--shadow-button);
+      z-index: 3;
+    }
+
+    .btn-yes:hover,
+    .btn-yes:active {
+      transform: scale(1.05);
+      box-shadow: 0 10px 24px rgba(255, 61, 127, 0.38);
+    }
+
+    /* Floating No Button */
+    .btn-no {
+      position: absolute;
+      right: 22px;
+      top: 22px;
+      background: #ffffff;
+      color: var(--text-muted);
+      border: 1.5px solid #ffc2d9;
+      box-shadow: 0 6px 14px rgba(180, 110, 140, 0.12);
+      z-index: 2;
+      transition:
+        left 0.36s cubic-bezier(0.34, 1.56, 0.64, 1),
+        top 0.36s cubic-bezier(0.34, 1.56, 0.64, 1),
+        transform 0.2s ease;
+      animation: floatNoBtn 2.6s ease-in-out infinite;
+    }
+
+    @keyframes floatNoBtn {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-4px); }
+    }
+
+    /* ==========================================================================
+       7. SUCCESS SCREEN & ENVELOPE LETTER
+       ========================================================================== */
+    .success-card {
+      display: none;
+      background: linear-gradient(180deg, #ffffff 0%, #fff4f8 100%);
+      border: 2px solid #ff9ec2;
+      animation: popIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    .success-card.visible {
+      display: block;
+    }
+
+    @keyframes popIn {
+      from {
+        opacity: 0;
+        transform: scale(0.92) translateY(16px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    .celebration-hearts {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      display: inline-block;
+      animation: pulseHeart 1.4s ease-in-out infinite;
+    }
+
+    .success-message {
+      font-size: 1.05rem;
+      color: var(--text-main);
+      line-height: 1.75;
+      margin-bottom: 22px;
+      font-weight: 500;
+      background: #fff9fb;
+      padding: 18px;
+      border-radius: var(--radius-md);
+      border: 1px solid #ffd8e6;
+    }
+
+    .btn-letter {
+      background: linear-gradient(135deg, #ff7eb3 0%, #ff5286 100%);
+      color: #ffffff;
+      box-shadow: var(--shadow-button);
+      width: 100%;
+      max-width: 280px;
+      margin: 0 auto;
+    }
+
+    .btn-letter:hover,
+    .btn-letter:active {
+      transform: translateY(-2px);
+    }
+
+    /* Envelope Wrapper & Animation */
+    .envelope-stage {
+      display: none;
+      margin-top: 26px;
+      padding-top: 10px;
+    }
+
+    .envelope-stage.visible {
+      display: block;
+      animation: fadeSlideUp 0.5s ease forwards;
+    }
+
+    .envelope-graphic {
+      width: 220px;
+      height: 140px;
+      margin: 28px auto 18px;
+      position: relative;
+      perspective: 800px;
+    }
+
+    .envelope-back {
+      position: absolute;
+      inset: 0;
+      background: #ffbfd6;
+      border-radius: 0 0 14px 14px;
+      box-shadow: 0 10px 25px rgba(230, 90, 140, 0.2);
+    }
+
+    .envelope-letter-preview {
+      position: absolute;
+      left: 14px;
+      right: 14px;
+      bottom: 10px;
+      height: 115px;
+      background: #ffffff;
+      border-radius: 10px;
+      border: 1px solid #ffe0ec;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.3s;
+      z-index: 2;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    .envelope-front {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      pointer-events: none;
+      overflow: hidden;
+      border-radius: 0 0 14px 14px;
+    }
+
+    .envelope-front::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 75px 110px 65px 110px;
+      border-color: transparent #ffd1e2 #ffc4da #ffd9e8;
+    }
+
+    .envelope-flap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 82px 110px 0 110px;
+      border-color: #ff9ec2 transparent transparent transparent;
+      transform-origin: top;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 4;
+    }
+
+    .wax-seal {
+      position: absolute;
+      top: 58px;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 36px;
+      height: 36px;
+      background: #ff4785;
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      box-shadow: 0 3px 8px rgba(200, 40, 95, 0.35);
+      z-index: 5;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    /* Open State for Envelope */
+    .envelope-stage.open .envelope-flap {
+      transform: rotateX(180deg);
+      z-index: 1;
+    }
+
+    .envelope-stage.open .wax-seal {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.5);
+    }
+
+    .envelope-stage.open .envelope-letter-preview {
+      transform: translateY(-48px);
+    }
+
+    /* Full Personal Letter Card */
+    .personal-letter-sheet {
+      background: #fffcfd;
+      border: 1.5px solid #ffc9dd;
+      border-radius: var(--radius-md);
+      padding: 24px 20px;
+      text-align: left;
+      box-shadow: inset 0 0 24px rgba(255, 192, 215, 0.18), 0 8px 24px rgba(225, 100, 145, 0.1);
+      font-family: var(--font-serif);
+      color: var(--text-main);
+      margin-top: 12px;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.6s ease 0.55s, transform 0.6s ease 0.55s;
+    }
+
+    .envelope-stage.open .personal-letter-sheet {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .personal-letter-sheet h3 {
+      font-family: var(--font-sans);
+      color: var(--primary-pink-dark);
+      font-size: 1.15rem;
+      margin-bottom: 12px;
+    }
+
+    .personal-letter-sheet p {
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+
+    .personal-letter-sheet .letter-signoff {
+      margin-top: 16px;
+      font-weight: 700;
+      color: var(--primary-pink-dark);
+      font-family: var(--font-sans);
+      text-align: right;
+    }
+
+    /* ==========================================================================
+       8. FOOTER / CREATOR CREDIT
+       ========================================================================== */
+    .site-footer {
+      text-align: center;
+      padding: 12px 16px 8px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .creator-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid #ffcada;
+      padding: 8px 18px;
+      border-radius: var(--radius-pill);
+      font-weight: 700;
+      color: var(--primary-pink-dark);
+      box-shadow: 0 4px 12px rgba(235, 105, 150, 0.1);
+    }
+
+    /* ==========================================================================
+       9. ACCESSIBILITY: REDUCED MOTION SUPPORT
+       ========================================================================== */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .greeting-subtitle {
+        opacity: 1 !important;
+      }
+      .personal-letter-sheet {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Decorative Floating Hearts & Sparkles Background -->
+  <div class="bg-decorations" id="bg-decorations" aria-hidden="true"></div>
+
+  <!-- Confetti Canvas (Activated when she taps Yes) -->
+  <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+
+  <main class="page-wrapper">
+    <!-- ========================================================================
+         SECTION 1: OPENING SCREEN
+         CUSTOMISE NAME: Replace [SANOBAR] or [HER_NAME] below if desired.
+         ======================================================================== -->
+    <header class="card" aria-label="Greeting">
+      <span class="hero-badge">✨ Special Delivery For My Bestie ✨</span>
+
+      <h1 class="greeting-title">Hey, [SANOBAR] 💗</h1>
+      <p class="greeting-subtitle">I have a little something for you...</p>
+
+      <!-- Cute Animated Inline SVG Illustration (No external assets needed) -->
+      <div class="illustration-box" aria-hidden="true">
+        <svg class="cute-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <!-- Soft Glow Circle -->
+          <circle cx="100" cy="105" r="72" fill="#ffeaf2" />
+
+          <!-- Sparkles -->
+          <g class="svg-sparkle" fill="#ff7aa8">
+            <path d="M35 45 L39 55 L49 59 L39 63 L35 73 L31 63 L21 59 L31 55 Z" />
+          </g>
+          <g class="svg-sparkle-delayed" fill="#ff9ec2">
+            <path d="M165 40 L168 48 L176 51 L168 54 L165 62 L162 54 L154 51 L162 48 Z" />
+          </g>
+          <circle class="svg-sparkle" cx="168" cy="128" r="4" fill="#ff7aa8" />
+          <circle class="svg-sparkle-delayed" cx="30" cy="125" r="3.5" fill="#ff9ec2" />
+
+          <!-- Cute Bear Ears -->
+          <circle cx="62" cy="64" r="20" fill="#fff" stroke="#f3b6cf" stroke-width="4" />
+          <circle cx="62" cy="64" r="10" fill="#ffc2d9" />
+          <circle cx="138" cy="64" r="20" fill="#fff" stroke="#f3b6cf" stroke-width="4" />
+          <circle cx="138" cy="64" r="10" fill="#ffc2d9" />
+
+          <!-- Cute Bear Body -->
+          <ellipse cx="100" cy="145" rx="44" ry="36" fill="#fff" stroke="#f3b6cf" stroke-width="4" />
+
+          <!-- Cute Bear Head -->
+          <circle cx="100" cy="95" r="46" fill="#fff" stroke="#f3b6cf" stroke-width="4" />
+
+          <!-- Rosy Cheeks -->
+          <ellipse cx="70" cy="102" rx="9" ry="5.5" fill="#ffb3ce" />
+          <ellipse cx="130" cy="102" rx="9" ry="5.5" fill="#ffb3ce" />
+
+          <!-- Eyes -->
+          <circle cx="79" cy="90" r="5" fill="#4a2c3a" />
+          <circle cx="77.5" cy="88.5" r="1.8" fill="#fff" />
+          <circle cx="121" cy="90" r="5" fill="#4a2c3a" />
+          <circle cx="119.5" cy="88.5" r="1.8" fill="#fff" />
+
+          <!-- Cute Snout & Smile -->
+          <ellipse cx="100" cy="100" rx="11" ry="8" fill="#fff5f8" />
+          <ellipse cx="100" cy="97" rx="4.5" ry="3.2" fill="#ff6b9d" />
+          <path d="M95 103 Q100 108 105 103" fill="none" stroke="#4a2c3a" stroke-width="2.5" stroke-linecap="round" />
+
+          <!-- Pulsing Heart Held by Paws -->
+          <g class="svg-heart-pulse">
+            <path
+              d="M100 165 C100 165 68 144 68 126 C68 115 77 108 86 108 C93 108 98 112 100 117 C102 112 107 108 114 108 C123 108 132 115 132 126 C13
